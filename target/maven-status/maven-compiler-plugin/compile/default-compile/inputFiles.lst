@@ -1,5 +1,5 @@
-/home/cliguori/software-product-sprint/portfolio/src/main/java/com/google/sps/data/Post.java
-/home/cliguori/software-product-sprint/portfolio/src/main/java/com/google/sps/servlets/HelloWorldServlet.java
-/home/cliguori/software-product-sprint/portfolio/src/main/java/com/google/sps/servlets/FormHandlerServlet.java
-/home/cliguori/software-product-sprint/portfolio/src/main/java/com/google/sps/servlets/PostLogServlet.java
-/home/cliguori/software-product-sprint/portfolio/src/main/java/com/google/sps/ServerMain.java
+/home/cliguori/SPS-higher-or-lower-game/src/main/java/com/google/sps/servlets/FormHandlerServlet.java
+/home/cliguori/SPS-higher-or-lower-game/src/main/java/com/google/sps/ServerMain.java
+/home/cliguori/SPS-higher-or-lower-game/src/main/java/com/google/sps/data/Post.java
+/home/cliguori/SPS-higher-or-lower-game/src/main/java/com/google/sps/servlets/HelloWorldServlet.java
+/home/cliguori/SPS-higher-or-lower-game/src/main/java/com/google/sps/servlets/PostLogServlet.java
