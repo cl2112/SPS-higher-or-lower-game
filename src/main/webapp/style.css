@@ -33,15 +33,15 @@ body {
 }
 
 footer {
-  display: inline-block;
-  position: fixed;
-  left: 0;
-  right: 0;
   bottom: 0;
-  width: 100%;
+  display: inline-block;
+  font-size: 24px;
+  left: 0;
+  position: fixed;
+  right: 0;
   text-align: center;
   vertical-align: bottom;
-  font-size: 24px;
+  width: 100%;
 }
 
 #score, 
