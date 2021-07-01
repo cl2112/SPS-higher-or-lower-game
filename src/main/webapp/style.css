@@ -1,0 +1,55 @@
+body {
+  background-color: #0E3948;
+  color: white;
+  font-family: 'Montserrat';
+  text-align: center;
+}
+
+.prompt {
+  margin-top: 8rem;
+}
+
+.content {
+  margin-top: 60px;
+}
+
+#stat {
+  font-size: 34px;
+}
+
+#question {
+  font-size: 30px;
+}
+
+.buttons {
+  display: inline-block;
+}
+
+#higher, 
+#equal, 
+#lower {
+  padding: 10px;
+  width: 8rem;
+}
+
+footer {
+  display: inline-block;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  vertical-align: bottom;
+  font-size: 24px;
+}
+
+#score, 
+#resources {
+  display: inline-block;
+  width: 45%;
+}
+
+#answer-container {
+  font-size: 22px;
+}

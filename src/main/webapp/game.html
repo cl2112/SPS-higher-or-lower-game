@@ -4,12 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href='//fonts.googleapis.com/css?family=Montserrat:thin,extra-light,light,100,200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
     <title>Higher Or Lower</title>
   </head>
   <body>
-    <h1>Higher Or Lower</h1>
-    <h3>This is the Game page</h3>
+
+    <div class="prompt">
+      <p id="stat">1 in 5 people in the U.S. experience some form of mental illness each year.<p>
+    </div>
+    <hr width="80%">
+    <div class="content">
+      <p id="question">Is the true stat higher, equal, or lower?</p>
+      <div class="buttons">
+        <img src="images/higher.png" id="higher" onclick="buttonPressed(this.id)">
+        <img src="images/equal.png" id="equal" onclick="buttonPressed(this.id)">
+        <img src="images/lower.png" id="lower" onclick="buttonPressed(this.id)">
+      </div>
+      <p id="answer-container"></p>
+
+    </div>
+
+    <footer>
+      <p id="resources">Resources</p>
+      <p id="score">Score: 0</p>
+    </footer>
     
   </body>
 </html>
