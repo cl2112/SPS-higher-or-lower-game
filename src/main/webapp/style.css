@@ -1,8 +1,12 @@
 body {
-  background-color: #0E3948;
+  background-color: #053742;
   color: white;
   font-family: 'Montserrat';
-  text-align: center;
+  /* text-align: center; */
+}
+
+.row {
+  margin-bottom: 0;
 }
 
 .prompt {
@@ -52,4 +56,41 @@ footer {
 
 #answer-container {
   font-size: 22px;
+}
+
+.text-highlight {
+  color: #a2dbfa;
+}
+
+/* Game Over Page */
+
+#results-container {
+  height: 25vh;
+}
+
+#message-container {
+  height: 45vh;
+}
+
+#user-options-container {
+  height: 30vh;
+}
+
+.button {
+    background: #39a2db;
+    width: 50%;
+    margin: 1em;
+    border-radius: 1em;
+    color: white;
+    text-shadow: 0px 0px 5px black;
+    border: .2em solid white;
+    display: inline-block;
+}
+
+.button p {
+  margin: .2em;
+}
+
+#message-source {
+  display: block;
 }
