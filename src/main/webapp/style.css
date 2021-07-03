@@ -1,8 +1,8 @@
 body {
-  background-color: #053742;
+  background: #053742;
   color: white;
-  font-family: 'Montserrat';
-  /* text-align: center; */
+  font-family: 'Montserrat', sans-serif;
+  /* text-align: center;  */  
 }
 
 .row {
@@ -58,8 +58,44 @@ footer {
   font-size: 22px;
 }
 
+/* Highlight Helpers */
+
 .text-highlight {
   color: #a2dbfa;
+}
+
+.higher-highlight {
+  color: #43a047;
+}
+
+.lower-highlight {
+  color: #e53935;
+}
+
+.equal-highlight {
+  color: #1e88e5;
+}
+
+.info-highlight {
+  color: #ffee58;
+}
+
+/* Landing Page */
+
+#logo-container {
+  height: 40vh;
+}
+
+#game-information-container {
+  height: 40vh;
+}
+
+#play-button-container {
+  height: 20vh;
+}
+
+#message-how-to-play {
+  margin: 0;
 }
 
 /* Game Over Page */
