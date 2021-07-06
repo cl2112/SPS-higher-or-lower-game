@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <script src="datastore.js"></script>
+  </head>
+  <style>
+    #task-list {
+    list-style-type: none;
+    }
+
+    .task {
+    border: thin solid black;
+    display: flex;
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+    }
+
+    .task span {
+    flex-grow: 1;
+    }
+  </style>
+  <body onload="loadTasks()">
+    <h1>Todo List</h1>
+
+    <form method="POST" action="/new-task">
+      <input type="text" name="prompt" />
+      <br/>
+      <input type="percent" name="percent" />
+      <br/>
+      <input type="text" name="source" />
+      <br/>
+      <button>Submit</button>
+    </form>
+
+    <hr/>
+
+    <ul id="task-list"></ul>
+
+  </body>
+</html>
