@@ -3,16 +3,72 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Higher Or Lower</title>
   </head>
   <body>
-    <h1>Higher Or Lower</h1>
-    <h3>This is the landing page</h3>
 
-    <a href="/game.html">Link to game page.</a>
-    <a href="gameover.html">Linke to gameover page.</a>
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m10 offset-m1 l10 offset-l1 xl8 offset-xl2">
+          
+          <!-- Logo -->
+          <div 
+            id="logo-container" 
+            class="row valign-wrapper center-align">
+            <div class="col s12">
+              <img 
+                class="responsive-img" 
+                src="./images/higher or lower logo main.png">       
+            </div>
+          </div>
+
+          <!-- Game Information -->
+          <div 
+            id="game-information-container" 
+            class="row">
+            <div class="col s12">
+              <label 
+                for=message-how-to-play" 
+                class="flow-text text-highlight">
+                How To Play:
+              </label>
+              <p 
+                id="message-how-to-play" 
+                class="flow-text">
+                Decide if the <span class="info-highlight">statistic</span> 
+                shown is <span class="higher-highlight">higher</span>, 
+                <span class="lower-highlight">lower</span> or 
+                <span class="equal-highlight">equal</span> than the actual 
+                statistic.
+              </p>
+            </div>
+          </div>
+
+          <!-- Play Button -->
+          <div 
+            id="play-button-container" 
+            class="row">
+            <div class="col s12 center-align">
+              <a 
+                href="/game.html" 
+                class="button">
+                <p class="flow-text">
+                  PLAY
+                </p>
+              </a>
+            </div>
+            <!-- For testing -->
+            <a href="gameover.html">Link to gameover page for testing.</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
     
   </body>
 </html>

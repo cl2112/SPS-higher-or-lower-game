@@ -3,13 +3,84 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Higher Or Lower</title>
   </head>
   <body>
-    <h1>Higher Or Lower</h1>
-    <h3>This is the Game Over page</h3>
-    
+
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m10 offset-m1 l10 offset-l1 xl8 offset-xl2">
+
+          <!-- Results -->
+          <div 
+            id="results-container" 
+            class="row center-align valign-wrapper">
+            <div class="col s12">
+              <h3 class="flow-text">
+                You got 
+                <span id="results-score" class="info-highlight">3</span> 
+                right.
+              </h3>
+              <h3 class="flow-text">
+                The average is 
+                <span id="results-average" class="info-highlight">3.3</span>.
+              </h3>
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div 
+            id="message-container" 
+            class="row">
+            <div class="col s12">
+              <p 
+                id="message-text"
+                class="flow-text">
+                "When you’re feeling anxious or stressed, take a time-out. 
+                Practice yoga, listen to music, meditate, get a massage, or 
+                learn relaxation techniques. Stepping back from the problem 
+                helps clear your head."
+              </p>
+              <label 
+                for="message-source" 
+                class="flow-text text-highlight">
+                Quote from:
+              </label>
+              <a 
+                href="https://adaa.org/tips" 
+                id="message-source" 
+                class="flow-text">
+                Anxiety & Depression Association of America
+              </a>
+            </div>
+          </div>
+
+          <!-- User Options -->
+          <div 
+            id="user-options-container" 
+            class="row">
+            <div class="col s12 center-align">
+              <a 
+                href="/game.html" 
+                class="button">
+                <p class="flow-text">AGAIN</p>
+              </a>
+              <a 
+                href="/" 
+                class="button">
+                <p class="flow-text">HOME</p>
+              </a>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>
