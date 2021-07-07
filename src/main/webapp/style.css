@@ -61,8 +61,14 @@ footer {
 
 #more-info-container {
  font-size: 18px;
- margin-bottom: 100px;
 }
+
+#source-container {
+font-size: 18px;
+margin-bottom: 100px;
+overflow-wrap: break-word;
+}
+
 
 /* Highlight Helpers */
 

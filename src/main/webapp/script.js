@@ -1,13 +1,16 @@
 // TODO: Retrieve data from backend
 var prompt1 = ["1 in 5 people in the U.S. experience some form of mental illness each year.",
   "1 in 5 people in the U.S. experience some form of mental illness each year.",
-  "equal"];
+  "equal",
+  "https://www.mentalhealthfirstaid.org/mental-health-resources/"];
 var prompt2 = ["79.5% of U.S. adults with mental illness received treatment in 2019.",
   "44.8% of U.S. adults with mental illness received treatment in 2019.", 
-  "lower"];
+  "lower",
+  "https://www.mentalhealthfirstaid.org/mental-health-resources/"];
 var prompt3 = ["10.4% of U.S. adults with mental illness also experienced a substance use disorder in 2019.",
   "18.4% of U.S. adults with mental illness also experienced a substance use disorder in 2019.",
-  "higher"];
+  "higher",
+  "https://www.mentalhealthfirstaid.org/mental-health-resources/"];
 
 var arr = [prompt1, prompt2, prompt3];
 
@@ -40,4 +43,7 @@ function buttonPressed(buttonID) {
   const info = document.getElementById('more-info-container');
   info.innerText = arr[index][1] + " Mental illnesses are common, but often kept quiet. \
   Know that you can reach out for help without shame, you are not alone!";
+
+  const source = document.getElementById('source-container');
+  source.innerHTML = "Source: " + "<a href='"+arr[index][3]+"' target=_blank>"+arr[index][3]+"</a>"
 }
