@@ -27,16 +27,21 @@ function statLoader() {
   const output = document.getElementById('stat');
   output.innerText = arr[index][0];
 }
+// create score as a global variable
+var score = 0;
 
 // Displays answer after clicking a button
+// Keeps count of the number of correct 
 function buttonPressed(buttonID) {
   var answer;
   if(buttonID == arr[index][2]) {
     answer = "CORRECT";
+    score += 1;
   }
   else {
-    answer = "INCORRECT";    
+    answer = "INCORRECT";
   }
+
   const output = document.getElementById('answer-container');
   output.innerText = answer;
 
@@ -46,4 +51,8 @@ function buttonPressed(buttonID) {
 
   const source = document.getElementById('source-container');
   source.innerHTML = "Source: " + "<a href='"+arr[index][3]+"' target=_blank>"+arr[index][3]+"</a>"
+
+  // Keeps track of score
+  const currentScore = document.getElementById('score');
+  currentScore.innerText = "Score: " + score;
 }
