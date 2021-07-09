@@ -33,6 +33,7 @@ var score = 0;
 // Displays answer after clicking a button
 // Keeps count of the number of correct 
 function buttonPressed(buttonID) {
+  var answer;
   if(buttonID == arr[index][2]) {
     answer = "CORRECT";
     score += 1;
