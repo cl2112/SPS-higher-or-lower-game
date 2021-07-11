@@ -18,15 +18,19 @@ package com.google.sps.data;
 public final class Task {
 
   private final long id;
+  private final long hc_id;
   private final String prompt;
-  private final String percent;
+  private final String actual;
+  private final String comparison;
   private final String source;
   private final long timestamp;
 
-  public Task(long id, String prompt, String percent, String source, long timestamp) {
+  public Task(long id, long hc_id, String prompt, String actual, String comparison, String source, long timestamp) {
     this.id = id;
+    this.hc_id = hc_id;
     this.prompt = prompt;
-    this.percent = percent;
+    this.actual = actual;
+    this.comparison = comparison;
     this.source = source;
     this.timestamp = timestamp;
   }

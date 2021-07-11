@@ -33,23 +33,20 @@ public class NewTaskServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    // Sanitize user input to remove HTML tags and JavaScript.
-    String prompt = Jsoup.clean(request.getParameter("prompt"), Whitelist.none());
-    String percent = Jsoup.clean(request.getParameter("percent"), Whitelist.none());
-    String source = Jsoup.clean(request.getParameter("source"), Whitelist.none());
+
     long timestamp = System.currentTimeMillis();
 
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     KeyFactory keyFactory = datastore.newKeyFactory().setKind("Task");
-    FullEntity taskEntity =
-        Entity.newBuilder(keyFactory.newKey())
-            .set("prompt", prompt)
-            .set("percent", percent)
-            .set("source", source)
-            .set("timestamp", timestamp)
-            .build();
+    
+    FullEntity taskEntity = Entity.newBuilder(keyFactory.newKey()).set("hc_id", 0).set("prompt", "10.4% of U.S. adults with mental illness also experienced a substance use disorder in 2019.").set("actual", "18.4% of U.S. adults with mental illness also experienced a substance use disorder in 2019.").set("comparison", "higher").set("source", "s").build();
+    FullEntity taskEntity2 = Entity.newBuilder(keyFactory.newKey()).set("hc_id", 1).set("prompt", "1 in 5 people in the U.S. experience some form of mental illness each year.").set("actual", "1 in 5 people in the U.S. experience some form of mental illness each year.").set("comparison", "equal").set("source", "https://www.mentalhealthfirstaid.org/mental-health-resources/").set("timestamp", timestamp). build();
+    FullEntity taskEntity3 = Entity.newBuilder(keyFactory.newKey()).set("hc_id", 2).set("prompt", "79.5% of U.S. adults with mental illness received treatment in 2019.").set("actual", "44.8% of U.S. adults with mental illness received treatment in 2019.").set("comparison", "lower").set("source", "https://www.mentalhealthfirstaid.org/mental-health-resources/").set("timestamp", timestamp).build();
+    
     datastore.put(taskEntity);
-
+    datastore.put(taskEntity2);
+    datastore.put(taskEntity3);
+    
     response.sendRedirect("/datastore.html");
   }
 }

@@ -22,22 +22,15 @@
     flex-grow: 1;
     }
   </style>
-  <body onload="loadTasks()">
+  <body>
     <h1>Todo List</h1>
 
     <form method="POST" action="/new-task">
-      <input type="text" name="prompt" />
-      <br/>
-      <input type="percent" name="percent" />
-      <br/>
-      <input type="text" name="source" />
-      <br/>
       <button>Submit</button>
     </form>
 
     <hr/>
 
-    <ul id="task-list"></ul>
-
+    <a href="/list-tasks">List Tasks</a>
   </body>
 </html>
