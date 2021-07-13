@@ -8,68 +8,6 @@ body {
   margin-bottom: 0;
 }
 
-/* Game Page */
-
-/* #prompt {
-  margin-top: 5rem;
-}
-
-#content {
-  margin-top: 3rem;
-} */
-
-/* #stat {
-  font-size: 34px;
-} */
-
-/* #question {
-  font-size: 30px;
-} */
-
-/* .buttons {
-  display: inline-block;
-}
-
-#higher, 
-#equal, 
-#lower {
-  padding: 8px;
-  width: 7rem;
-} */
-
-/* footer {
-  bottom: 0;
-  display: inline-block;
-  font-size: 24px;
-  left: 0;
-  position: fixed;
-  right: 0;
-  text-align: center;
-  vertical-align: bottom;
-  width: 100%;
-} */
-
-/* #score, 
-#resources {
-  display: inline-block;
-  width: 45%;
-} */
-
-/* #answer-container {
-  font-size: 22px;
-}
-
-#more-info-container {
- font-size: 18px;
-}
-
-#source-container {
-font-size: 18px;
-margin-bottom: 100px;
-overflow-wrap: break-word;
-} */
-
-
 /* Highlight Helpers */
 
 .text-highlight {
@@ -113,20 +51,24 @@ overflow-wrap: break-word;
 /* Game Page */
 
 #stat-container {
-  height: 35vh;
+  height: 30vh;
   border-bottom: .1em solid whitesmoke;
 }
 
 #prompt-container {
-  height: 35vh;
+  height: 50vh;
 }
 
 #answer-container {
-  height: 35vh;
+  height: 50vh;
 }
 
 #extra-info-container {
-  height:30vh;
+  height:20vh;
+}
+
+#source {
+  display: block;
 }
 
 /* Game Over Page */
