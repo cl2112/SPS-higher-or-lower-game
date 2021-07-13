@@ -71,6 +71,11 @@ body {
   display: block;
 }
 
+.answer-button {
+  max-width: 5em;
+  width: 25vw;
+}
+
 /* Game Over Page */
 
 #results-container {
