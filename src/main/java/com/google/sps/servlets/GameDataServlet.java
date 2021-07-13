@@ -23,23 +23,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /** Servlet responsible for listing tasks. */
-@WebServlet("/get-random-data")
+@WebServlet("/game-data")
 public class GameDataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
 
+    Query<Entity> countQuery = Query.newEntityQueryBuilder().setKind("Task").setOrderBy(OrderBy.desc("timestamp")).build();
+    QueryResults<Entity> countResults = datastore.run(countQuery);
+
+    int count = 0;
+    while (countResults.hasNext()) {
+      count += 1;
+    }
+
     Random rand = new Random();
-    long randIndex = rand.nextInt(3);
+    long randIndex = rand.nextInt(count);
 
-    Query<Entity> query = Query.newEntityQueryBuilder().setKind("Task").setFilter(PropertyFilter.eq("hc_id", randIndex)).build();
-
-    QueryResults<Entity> results = datastore.run(query);
+    Query<Entity> dataQuery = Query.newEntityQueryBuilder().setKind("Task").setFilter(PropertyFilter.eq("hc_id", randIndex)).build();
+    QueryResults<Entity> dataResults = datastore.run(dataQuery);
 
     Task task = null;
-    if(results.hasNext()) {
-      Entity entity = results.next();
+    if(dataResults.hasNext()) {
+      Entity entity = dataResults.next();
 
       long id = entity.getKey().getId();
       long hc_id = entity.getLong("hc_id");
