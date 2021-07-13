@@ -10,23 +10,23 @@ body {
 
 /* Game Page */
 
-#prompt {
+/* #prompt {
   margin-top: 5rem;
 }
 
 #content {
   margin-top: 3rem;
-}
+} */
 
-#stat {
+/* #stat {
   font-size: 34px;
-}
+} */
 
-#question {
+/* #question {
   font-size: 30px;
-}
+} */
 
-.buttons {
+/* .buttons {
   display: inline-block;
 }
 
@@ -35,9 +35,9 @@ body {
 #lower {
   padding: 8px;
   width: 7rem;
-}
+} */
 
-footer {
+/* footer {
   bottom: 0;
   display: inline-block;
   font-size: 24px;
@@ -47,15 +47,15 @@ footer {
   text-align: center;
   vertical-align: bottom;
   width: 100%;
-}
+} */
 
-#score, 
+/* #score, 
 #resources {
   display: inline-block;
   width: 45%;
-}
+} */
 
-#answer-container {
+/* #answer-container {
   font-size: 22px;
 }
 
@@ -67,7 +67,7 @@ footer {
 font-size: 18px;
 margin-bottom: 100px;
 overflow-wrap: break-word;
-}
+} */
 
 
 /* Highlight Helpers */
@@ -108,6 +108,25 @@ overflow-wrap: break-word;
 
 #message-how-to-play {
   margin: 0;
+}
+
+/* Game Page */
+
+#stat-container {
+  height: 35vh;
+  border-bottom: .1em solid whitesmoke;
+}
+
+#prompt-container {
+  height: 35vh;
+}
+
+#answer-container {
+  height: 35vh;
+}
+
+#extra-info-container {
+  height:30vh;
 }
 
 /* Game Over Page */

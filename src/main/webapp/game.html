@@ -3,49 +3,93 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href='//fonts.googleapis.com/css?family=Montserrat:thin,extra-light,light,100,200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <title>Higher Or Lower</title>
   </head>
-  <body onload="statLoader()">
+  <body>
+
     <div class="container">
       <div class="row">
         <div class="col s12 m10 offset-m1 l10 offset-l1 xl8 offset-xl2">
     
-          <div id="prompt" class="row center-align">
-            <p id="stat"><p>
-          </div>
-          <hr width="80%">
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col s12 m10 offset-m1 l10 offset-l1 xl8 offset-xl2">
-          <div id="content" class="row center-align">
-            <p id="question">Is the true stat higher, equal, or lower?</p>
-            <div class="buttons">
-              <img src="images/higher.png" id="higher" onclick="buttonPressed(this.id)">
-              <img src="images/equal.png" id="equal" onclick="buttonPressed(this.id)">
-              <img src="images/lower.png" id="lower" onclick="buttonPressed(this.id)">
+          <!-- Stat -->
+          <div 
+            id="stat-container" 
+            class="row center-align valign-wrapper">
+            <div class="col s12">
+              <p 
+              id="stat"
+              class="flow-text"><p>
+              <!-- <hr width="80%"> -->
             </div>
-            <p id="answer-container" class="row center-align"></p>
           </div>
-          <p id="more-info-container"></p>
-          <p id="source-container"></p>
-        </div>
-      </div>
+          
 
-      <div class="row">
-        <div class="col s12 m10 offset-m1 l10 offset-l1 xl8 offset-xl2">
-          <footer>
-            <p id="resources">Resources</p>
-            <p id="score">Score: 0</p>
-          </footer>
+
+          <!-- Prompt -->
+          <div id="prompt-container" class="row center-align valign-wrapper">
+            <div class="col s12">
+              <p id="question" class="flow-text">
+                Is the true stat 
+                <br>
+                <span class="higher-highlight">HIGHER</span>, 
+                <span class="equal-highlight">EQUAL</span>, or 
+                <span class="lower-highlight">LOWER</span>?
+              </p>
+              <div class="row">
+                <div class="col s4">
+                  <img src="images/higher.png" id="higher" class="responsive-img">
+                </div>
+                <div class="col s4">
+                  <img src="images/equal.png" id="equal" class="responsive-img">
+                </div>
+                <div class="col s4">
+                  <img src="images/lower.png" id="lower" class="responsive-img">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Answer -->
+          <div id="answer-container" class="row center-align hide">
+            <div class="col s12">
+              <p id="answer"></p>
+              <p id="message"></p>
+              
+              <div id="continue" class="next-button">
+                <a 
+                  href="#" 
+                  class="button">
+                  <p class="flow-text">
+                    CONTINUE
+                  </p>
+                </a>
+              </div>
+
+            </div>
+          </div>
+
+      
+          <!-- Extra Info -->
+          <div id="extra-info-container" class="row center-align">
+            <div class="col s12">
+              <p>Source:</p>
+              <a href="#" id="source" target="_blank" class="flow-text"></a>
+
+              <p id="resources">Resources</p>
+              <p id="score">Score: 0</p>
+
+            </div>
+          </div>
+          
         </div>
       </div>
     </div>
-    
+
   </body>
 </html>
