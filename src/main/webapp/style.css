@@ -29,6 +29,9 @@ body {
 .info-highlight {
   color: #ffee58;
 }
+ .plain-text {
+  color: white;
+ }
 
 /* Landing Page */
 
@@ -107,4 +110,8 @@ body {
 
 #message-source {
   display: block;
+}
+
+a:hover {
+  color: #a2dbfa;
 }

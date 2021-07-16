@@ -13,18 +13,21 @@ createButtonEventListeners(dataContainers.buttons);
 // hides the answer container.
 function displayPrompt() {
   // TODO: Make sure the same prompt is not seen twice.
-  prompt = getPrompt(); 
+  // TODO: Figure out how to access properties in order to display
+  prompt = getStat();
+  console.log(prompt);
 
   // Display stat
-  dataContainers.stat.innerText = prompt.stat;
+  dataContainers.stat.innerText = prompt.prompt;
 
   // Display source
   dataContainers.source.setAttribute("href", prompt.sourceURL);
-  dataContainers.source.innerText = prompt.source;
+  dataContainers.source.innerText = "Source: " + prompt.source;
 
   // Show/Hide containers
   dataContainers.answerContainer.classList.add("hide");
   dataContainers.promptContainer.classList.remove("hide");
+  dataContainers.source.classList.add("hide");
 }
 
 // Creates the event listeners for the buttons.
@@ -69,7 +72,7 @@ function buttonPressed(event) {
 // shows the answer container while hiding the prompt container.
 function correctResponse() {
   // Display the true stat
-  dataContainers.stat.innerText = prompt.trueStat;
+  dataContainers.stat.innerText = prompt.actual;
 
   // Display if the answer was correct
   dataContainers.answer.innerText = "CORRECT";
@@ -78,33 +81,35 @@ function correctResponse() {
 
   // Display a supportive message.
   // TODO: Randomize the message or include one in the prompt to pull from.
-  dataContainers.moreInfo.innerText = 
+  dataContainers.moreInfo.innerText =
     "Mental illnesses are common, but often kept quiet. \
     Know that you can reach out for help without shame, you are not alone!";
   
   // Show/Hide containers
   dataContainers.promptContainer.classList.add("hide");
   dataContainers.answerContainer.classList.remove("hide");
+  dataContainers.source.classList.remove("hide");
 }
 
 // Procedure when the user gets the wrong answer. Displays the correct data and
 // shows the answer container while hiding the prompt container.
 function wrongResponse() {
   // Display the true stat
-  dataContainers.stat.innerText = prompt.trueStat;
+  dataContainers.stat.innerText = prompt.actual;
 
   // Display if the answer was correct
   dataContainers.answer.innerText = "INCORRECT";
 
   // Display a supportive message.
   // TODO: Randomize the message or include one in the prompt to pull from.
-  dataContainers.moreInfo.innerText = 
+  dataContainers.moreInfo.innerText =
     "Mental illnesses are common, but often kept quiet. \
     Know that you can reach out for help without shame, you are not alone!";
   
   // Show/Hide containers
   dataContainers.promptContainer.classList.add("hide");
   dataContainers.answerContainer.classList.remove("hide");
+  dataContainers.source.classList.remove("hide");
 }
 
 // Increases the score and displays the new score on the page.
@@ -112,43 +117,17 @@ function wrongResponse() {
 // game over screen.
 function increaseScore() {
   score++;
-  dataContainers.score.innerText = score;
+  dataContainers.score.innerText = "Score: " + score;
 }
 
+// Fetches the data for the prompts
+async function getStat() {
+  const responseFromServer = await fetch('/game-data');
+  const textFromResponse = await responseFromServer.json();
+  
+  console.log(textFromResponse);
 
-// Fetches the data for the prompts.
-function getPrompt() {
-  // TODO: Retrieve data from backend instead of hard coding
-  let prompt1 = {
-    "stat": "1 in 5 people in the U.S. experience some form of mental illness each year.",
-    "trueStat": "1 in 5 people in the U.S. experience some form of mental illness each year.",
-    "answer": "equal",
-    "source": "Mental Health First Aid USA",
-    "sourceURL": "https://www.mentalhealthfirstaid.org/mental-health-resources/"
-  };
-
-  let prompt2 = {
-    "stat": "79.5% of U.S. adults with mental illness received treatment in 2019.",
-    "trueStat": "44.8% of U.S. adults with mental illness received treatment in 2019.",
-    "answer": "lower",
-    "source": "Mental Health First Aid USA",
-    "sourceURL": "https://www.mentalhealthfirstaid.org/mental-health-resources/"
-  };
-
-  let prompt3 = {
-    "stat": "10.4% of U.S. adults with mental illness also experienced a substance use disorder in 2019.",
-    "trueStat": "18.4% of U.S. adults with mental illness also experienced a substance use disorder in 2019.",
-    "answer": "higher",
-    "source": "Mental Health First Aid USA",
-    "sourceURL": "https://www.mentalhealthfirstaid.org/mental-health-resources/"
-  };
-
-  let arr = [prompt1, prompt2, prompt3];
-
-  let randIndex = Math.floor(Math.random() * arr.length);
-
-  // Return a prompt.
-  return arr[randIndex]
+  return textFromResponse;
 }
 
 // Grabs the output elements on the page and returns them in an object.

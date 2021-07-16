@@ -23,15 +23,15 @@ public final class Task {
   private final String actual;
   private final String comparison;
   private final String source;
-  private final long timestamp;
+  private final String sourceURL;
 
-  public Task(long id, long hc_id, String prompt, String actual, String comparison, String source, long timestamp) {
+  public Task(long id, long hc_id, String prompt, String actual, String comparison, String source, String sourceURL) {
     this.id = id;
     this.hc_id = hc_id;
     this.prompt = prompt;
     this.actual = actual;
     this.comparison = comparison;
     this.source = source;
-    this.timestamp = timestamp;
+    this.sourceURL = sourceURL;
   }
 }
