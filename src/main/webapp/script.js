@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", displayPrompt);
 let dataContainers = getDataContainers(); // TODO: Make this a constant
 let prompt;
 let score = 0;
+let finalScore = 0;
+let gameNumber = 0;
+let numQuestions = 0;
 
 // Set up event listeners.
 createButtonEventListeners(dataContainers.buttons);
@@ -47,21 +50,39 @@ function continueReponse() {
   }
   else {
     window.location.href = "/gameover.html";
+    getScore();
+    gameNumber += 1;
   }
 }
 
+// Gets the User's final score in a game and puts it into the results score container
+function getScore() {
+  finalScore += score;
+  percentCorrect = (finalScore / numQuestions) * 100;
+  dataContainers.resultScore.innerText = percentCorrect;
+}
+
+// Gets the average score from the user
+function getAvg(){
+  let prev_score = getScore();
+  dataContainers.resultsAverage.innerText += prev_score;
+  let storagedAvgScore = localStorage.getItem("results-average");
+  return storagedAvgScore / gameNumber;
+}
+ 
 // Handles the user clicking on one of the answer buttons. If it is the correct
 // choice then follow the correct response procedure, else follow the wrong
 // response procedure.
 function buttonPressed(event) {
   choice = event.target.id
-  
+  numQuestions += 1;
   // Check if the id of the button matches the answer field of the prompt.
   if (choice == prompt.answer) {
     correctResponse();
   } 
   else {
     wrongResponse();
+
   }
 }
 
@@ -115,7 +136,6 @@ function increaseScore() {
   dataContainers.score.innerText = score;
 }
 
-
 // Fetches the data for the prompts.
 function getPrompt() {
   // TODO: Retrieve data from backend instead of hard coding
@@ -166,6 +186,8 @@ function getDataContainers() {
       "lower": document.getElementById("lower"),
       "continue": document.getElementById("continue")
     },
-    "score": document.getElementById("score")
+    "score": document.getElementById("score"),
+    "resultScore": document.getElementById("results-score"), 
+    "resultsAverage": document.getElementById("results-average")
   };
 }
