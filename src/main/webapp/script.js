@@ -2,10 +2,9 @@
 document.addEventListener("DOMContentLoaded", displayPrompt);
 
 // Global Variables
-let dataContainers = getDataContainers(); // TODO: Make this a constant
+const dataContainers = getDataContainers(); // TODO: Make this a constant
 let prompt;
 let score = 0;
-
 // Set up event listeners.
 createButtonEventListeners(dataContainers.buttons);
 
@@ -47,6 +46,7 @@ function continueReponse() {
   }
   else {
     window.location.href = "/gameover.html";
+    getAndSaveScore();
   }
 }
 
@@ -114,7 +114,23 @@ function increaseScore() {
   score++;
   dataContainers.score.innerText = score;
 }
-
+function getAndSaveScore() {
+  let avgScore = localStorage.getItem('avgScore');
+  if (avgScore == null) {
+    avgScore = {sum: score, count: 1};
+  }
+  else {
+    avgScore = JSON.parse(avgScore);
+    avgScore.sum += score;
+    avgScore.count += 1;
+  }
+  localStorage.setItem('avgScore', JSON.stringify(avgScore)); 
+  let avg = avgScore.sum / avgScore.count;
+  console.log("avg", avg);
+  const average = document.getElementById("results-average");
+  average.innerText = avg;
+  // dataContainers.average.innerText = avg;
+}
 
 // Fetches the data for the prompts.
 function getPrompt() {
@@ -166,6 +182,10 @@ function getDataContainers() {
       "lower": document.getElementById("lower"),
       "continue": document.getElementById("continue")
     },
-    "score": document.getElementById("score")
+    "score": document.getElementById("score"),
+    // "average": document.getElementById("results-average")    
+    // "results": document.getElementById("results-score")
+    
+
   };
 }
