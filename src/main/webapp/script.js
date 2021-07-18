@@ -45,9 +45,14 @@ function continueReponse() {
     displayPrompt(); 
   }
   else {
+    saveScore();
     window.location.href = "/gameover.html";
-    getAndSaveScore();
   }
+}
+
+function saveScore() {
+  localStorage.setItem("finalScore", score);
+  
 }
 
 // Handles the user clicking on one of the answer buttons. If it is the correct
@@ -113,23 +118,6 @@ function wrongResponse() {
 function increaseScore() {
   score++;
   dataContainers.score.innerText = score;
-}
-function getAndSaveScore() {
-  let avgScore = localStorage.getItem('avgScore');
-  if (avgScore == null) {
-    avgScore = {sum: score, count: 1};
-  }
-  else {
-    avgScore = JSON.parse(avgScore);
-    avgScore.sum += score;
-    avgScore.count += 1;
-  }
-  localStorage.setItem('avgScore', JSON.stringify(avgScore)); 
-  let avg = avgScore.sum / avgScore.count;
-  console.log("avg", avg);
-  const average = document.getElementById("results-average");
-  average.innerText = avg;
-  // dataContainers.average.innerText = avg;
 }
 
 // Fetches the data for the prompts.
