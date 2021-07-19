@@ -14,6 +14,11 @@ function getScore() {
   return Number(score); 
 }
 
+// Rounds by two decimals 
+function round(value) {
+  let decimals = 2;
+  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
 // Gets player's average score and updates avgScore based on last score
 function getAvg(score) {
   let avgScore = localStorage.getItem("avgScore");
@@ -30,7 +35,8 @@ function getAvg(score) {
   }
   // Adds avgScore to local storage and return avg score
   localStorage.setItem("avgScore", JSON.stringify(avgScore));
-  return avgScore.sum / avgScore.count;
+  let avg = avgScore.sum / avgScore.count;
+  return round(avg);
 }
 
 // Displays the average player score and the user final score at gameover 
