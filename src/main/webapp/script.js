@@ -170,9 +170,7 @@ function getDataContainers() {
       "lower": document.getElementById("lower"),
       "continue": document.getElementById("continue")
     },
-    "score": document.getElementById("score"),
-    // "average": document.getElementById("results-average")    
-    // "results": document.getElementById("results-score")
+    "score": document.getElementById("score")
     
 
   };
