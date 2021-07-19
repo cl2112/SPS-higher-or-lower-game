@@ -1,9 +1,9 @@
 // Wait for the page to load then call the startGame function.
-document.addEventListener("DOMContentLoaded", displayPrompt);
+document.addEventListener("DOMContentLoaded", getStat);
 
 // Global Variables
 let dataContainers = getDataContainers(); // TODO: Make this a constant
-let prompt;
+let game_data;
 let score = 0;
 
 // Set up event listeners.
@@ -13,16 +13,12 @@ createButtonEventListeners(dataContainers.buttons);
 // hides the answer container.
 function displayPrompt() {
   // TODO: Make sure the same prompt is not seen twice.
-  // TODO: Figure out how to access properties in order to display
-  prompt = getStat();
-  console.log(prompt);
-
   // Display stat
-  dataContainers.stat.innerText = prompt.prompt;
+  dataContainers.stat.innerText = game_data.prompt;
 
   // Display source
-  dataContainers.source.setAttribute("href", prompt.sourceURL);
-  dataContainers.source.innerText = "Source: " + prompt.source;
+  dataContainers.source.setAttribute("href", game_data.sourceURL);
+  dataContainers.source.innerText = game_data.source;
 
   // Show/Hide containers
   dataContainers.answerContainer.classList.add("hide");
@@ -60,7 +56,7 @@ function buttonPressed(event) {
   choice = event.target.id
   
   // Check if the id of the button matches the answer field of the prompt.
-  if (choice == prompt.answer) {
+  if (choice == game_data.comparison) {
     correctResponse();
   } 
   else {
@@ -72,7 +68,7 @@ function buttonPressed(event) {
 // shows the answer container while hiding the prompt container.
 function correctResponse() {
   // Display the true stat
-  dataContainers.stat.innerText = prompt.actual;
+  dataContainers.stat.innerText = game_data.actual;
 
   // Display if the answer was correct
   dataContainers.answer.innerText = "CORRECT";
@@ -95,7 +91,7 @@ function correctResponse() {
 // shows the answer container while hiding the prompt container.
 function wrongResponse() {
   // Display the true stat
-  dataContainers.stat.innerText = prompt.actual;
+  dataContainers.stat.innerText = game_data.actual;
 
   // Display if the answer was correct
   dataContainers.answer.innerText = "INCORRECT";
@@ -123,11 +119,9 @@ function increaseScore() {
 // Fetches the data for the prompts
 async function getStat() {
   const responseFromServer = await fetch('/game-data');
-  const textFromResponse = await responseFromServer.json();
+  game_data = await responseFromServer.json();
   
-  console.log(textFromResponse);
-
-  return textFromResponse;
+  displayPrompt();
 }
 
 // Grabs the output elements on the page and returns them in an object.
