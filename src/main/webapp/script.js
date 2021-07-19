@@ -2,10 +2,9 @@
 document.addEventListener("DOMContentLoaded", displayPrompt);
 
 // Global Variables
-let dataContainers = getDataContainers(); // TODO: Make this a constant
+const dataContainers = getDataContainers(); // TODO: Make this a constant
 let prompt;
 let score = 0;
-
 // Set up event listeners.
 createButtonEventListeners(dataContainers.buttons);
 
@@ -46,8 +45,14 @@ function continueReponse() {
     displayPrompt(); 
   }
   else {
+    saveScore();
     window.location.href = "/gameover.html";
   }
+}
+
+function saveScore() {
+  localStorage.setItem("finalScore", score);
+  
 }
 
 // Handles the user clicking on one of the answer buttons. If it is the correct
@@ -115,7 +120,6 @@ function increaseScore() {
   dataContainers.score.innerText = score;
 }
 
-
 // Fetches the data for the prompts.
 function getPrompt() {
   // TODO: Retrieve data from backend instead of hard coding
@@ -167,5 +171,7 @@ function getDataContainers() {
       "continue": document.getElementById("continue")
     },
     "score": document.getElementById("score")
+    
+
   };
 }
