@@ -42,7 +42,7 @@ function createButtonEventListeners(buttonContainers) {
 function continueReponse() {
   // Check if the answer text says 'CORRECT' to determine the next step.
   if (dataContainers.answer.innerText == "CORRECT") {
-    displayPrompt(); 
+    getStat(); 
   }
   else {
     window.location.href = "/gameover.html";
