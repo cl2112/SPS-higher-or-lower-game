@@ -37,7 +37,7 @@ public class ListTasksServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
-    Query<Entity> query = Query.newEntityQueryBuilder().setKind("Task").setOrderBy(OrderBy.desc("timestamp")).build();
+    Query<Entity> query = Query.newEntityQueryBuilder().setKind("stat").setOrderBy(OrderBy.desc("hc_id")).build();
     QueryResults<Entity> results = datastore.run(query);
 
     List<Task> tasks = new ArrayList<>();
@@ -50,9 +50,9 @@ public class ListTasksServlet extends HttpServlet {
       String actual = entity.getString("actual");
       String comparison = entity.getString("comparison");
       String source = entity.getString("source");
-      long timestamp = entity.getLong("timestamp");
+      String sourceURL = entity.getString("sourceURL");
 
-      Task task = new Task(id, hc_id, prompt, actual, comparison, source, timestamp);
+      Task task = new Task(id, hc_id, prompt, actual, comparison, source, sourceURL);
       tasks.add(task);
     }
 
