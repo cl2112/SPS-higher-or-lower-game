@@ -68,6 +68,6 @@ public class GameDataServlet extends HttpServlet {
     System.out.println("TASK: " + taskJson);
 
     response.setContentType("application/json;");
-    response.getWriter().println(gson.toJson(taskJson));
+    response.getWriter().println(taskJson);
   }
 }
