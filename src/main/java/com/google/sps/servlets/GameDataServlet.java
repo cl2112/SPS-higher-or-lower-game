@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Servlet responsible for listing tasks. */
+/** Servlet responsible for retrieving random prompt */
 @WebServlet("/game-data")
 public class GameDataServlet extends HttpServlet {
 
@@ -30,20 +30,22 @@ public class GameDataServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
 
-    Query<Entity> countQuery = Query.newEntityQueryBuilder().setKind("Task").setOrderBy(OrderBy.desc("timestamp")).build();
+    Query<Entity> countQuery = Query.newEntityQueryBuilder().setKind("stat").setOrderBy(OrderBy.desc("hc_id")).build();
     QueryResults<Entity> countResults = datastore.run(countQuery);
 
     int count = 0;
     while (countResults.hasNext()) {
       count += 1;
+      countResults.next();
     }
 
     Random rand = new Random();
-    long randIndex = rand.nextInt(count);
+    int randIndex = rand.nextInt(count);
 
-    Query<Entity> dataQuery = Query.newEntityQueryBuilder().setKind("Task").setFilter(PropertyFilter.eq("hc_id", randIndex)).build();
+    Query<Entity> dataQuery = 
+        Query.newEntityQueryBuilder().setKind("stat").setFilter(PropertyFilter.eq("hc_id", randIndex)).build();
     QueryResults<Entity> dataResults = datastore.run(dataQuery);
-
+    
     Task task = null;
     if(dataResults.hasNext()) {
       Entity entity = dataResults.next();
@@ -54,14 +56,18 @@ public class GameDataServlet extends HttpServlet {
       String actual = entity.getString("actual");
       String comparison = entity.getString("comparison");
       String source = entity.getString("source");
-      long timestamp = entity.getLong("timestamp");
+      String sourceURL = entity.getString("sourceURL");
 
-      task = new Task(id, hc_id, prompt, actual, comparison, source, timestamp);
+      task = new Task(id, hc_id, prompt, actual, comparison, source, sourceURL);
     }
 
+    // System.out.println("TASK: " + task);
     Gson gson = new Gson();
+    String taskJson = gson.toJson(task);
+
+    System.out.println("TASK: " + taskJson);
 
     response.setContentType("application/json;");
-    response.getWriter().println(gson.toJson(task));
+    response.getWriter().println(gson.toJson(taskJson));
   }
 }
