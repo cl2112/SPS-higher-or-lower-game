@@ -2,7 +2,8 @@
 document.addEventListener("DOMContentLoaded", getStat);
 
 // Global Variables
-let dataContainers = getDataContainers(); // TODO: Make this a constant
+
+const dataContainers = getDataContainers();
 let game_data;
 let score = 0;
 
@@ -45,8 +46,14 @@ function continueReponse() {
     getStat(); 
   }
   else {
+    saveScore();
     window.location.href = "/gameover.html";
   }
+}
+
+function saveScore() {
+  localStorage.setItem("finalScore", score);
+  
 }
 
 // Handles the user clicking on one of the answer buttons. If it is the correct
@@ -140,5 +147,7 @@ function getDataContainers() {
       "continue": document.getElementById("continue")
     },
     "score": document.getElementById("score")
+    
+
   };
 }
