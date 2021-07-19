@@ -64,9 +64,7 @@ public class GameDataServlet extends HttpServlet {
     // System.out.println("TASK: " + task);
     Gson gson = new Gson();
     String taskJson = gson.toJson(task);
-
-    System.out.println("TASK: " + taskJson);
-
+    
     response.setContentType("application/json;");
     response.getWriter().println(taskJson);
   }
