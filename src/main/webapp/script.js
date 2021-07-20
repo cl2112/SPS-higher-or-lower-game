@@ -14,7 +14,7 @@ createButtonEventListeners(dataContainers.buttons);
 // hides the answer container.
 function displayPrompt() {
   // TODO: Make sure the same prompt is not seen twice.
-  // Display stat
+  // Display prompt
   dataContainers.stat.innerText = game_data.prompt;
 
   // Display source
@@ -74,9 +74,6 @@ function buttonPressed(event) {
 // Procedure when the user gets the right answer. Displays the correct data and
 // shows the answer container while hiding the prompt container.
 function correctResponse() {
-  // Display the true stat
-  dataContainers.stat.innerText = game_data.actual;
-
   // Display if the answer was correct
   dataContainers.answer.innerText = "CORRECT";
 
@@ -84,8 +81,7 @@ function correctResponse() {
 
   // Display a supportive message.
   // TODO: Randomize the message or include one in the prompt to pull from.
-  dataContainers.moreInfo.innerText =
-    "Mental illnesses are common, but often kept quiet. \
+  dataContainers.moreInfo.innerText = game_data.actual + " Mental illnesses are common, but often kept quiet. \
     Know that you can reach out for help without shame, you are not alone!";
   
   // Show/Hide containers
@@ -97,16 +93,12 @@ function correctResponse() {
 // Procedure when the user gets the wrong answer. Displays the correct data and
 // shows the answer container while hiding the prompt container.
 function wrongResponse() {
-  // Display the true stat
-  dataContainers.stat.innerText = game_data.actual;
-
   // Display if the answer was correct
   dataContainers.answer.innerText = "INCORRECT";
 
   // Display a supportive message.
   // TODO: Randomize the message or include one in the prompt to pull from.
-  dataContainers.moreInfo.innerText =
-    "Mental illnesses are common, but often kept quiet. \
+  dataContainers.moreInfo.innerText = game_data.actual + " Mental illnesses are common, but often kept quiet. \
     Know that you can reach out for help without shame, you are not alone!";
   
   // Show/Hide containers
